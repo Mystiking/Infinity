@@ -25,6 +25,8 @@ func _process(delta):
 		get_node("Velocity").set_text("Velocity" + str(ship_velocity))		
 		ship_velocity += ship_accelerate
 		ship_pos += ship_velocity * delta
+		#play exhaust animation
+		
 	else:
 		ship_pos += ship_velocity * delta
 		get_node("Acceleration").set_text("Acceleration" + str(ship_accelerate))

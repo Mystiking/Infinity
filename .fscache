@@ -1,0 +1,10 @@
+::res://::1439801435
+HelloWorld.scn::PackedScene::1439800107::
+Universe.gd::GDScript::1439800107::
+Universe.scn::PackedScene::1439800107::
+buttonLoL.scn::PackedScene::1439800107::
+icon.png::ImageTexture::1439800107::
+label.gd::GDScript::1439800107::
+ship_movement.gd::GDScript::1439800107::
+simple-rocket-md.png::ImageTexture::1439800107::
+thruster.png::ImageTexture::1439801435::
