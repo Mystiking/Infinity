@@ -26,7 +26,7 @@ func _process(delta):
 		ship_velocity += ship_accelerate
 		ship_pos += ship_velocity * delta
 		#play exhaust animation
-		
+		get_node("Ship/AnimationPlayer").play("exhaust")
 	else:
 		ship_pos += ship_velocity * delta
 		get_node("Acceleration").set_text("Acceleration" + str(ship_accelerate))
