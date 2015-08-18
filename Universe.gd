@@ -21,16 +21,12 @@ func _process(delta):
 	
 	# The forward movement of the spaceship
 	if (Input.is_action_pressed("ship_forward")):
-		get_node("Acceleration").set_text("Acceleration" + str(ship_accelerate))
-		get_node("Velocity").set_text("Velocity" + str(ship_velocity))		
 		ship_velocity += ship_accelerate
 		ship_pos += ship_velocity * delta
 		#play exhaust animation
 		get_node("Ship/AnimationPlayer").play("exhaust")
 	else:
 		ship_pos += ship_velocity * delta
-		get_node("Acceleration").set_text("Acceleration" + str(ship_accelerate))
-		get_node("Velocity").set_text("Velocity" + str(ship_velocity))
 	
 	# All rotating is calculated by multiplying the accelerate vector with a "turn matrix"
 	# Creation of turn right matrix
@@ -46,15 +42,11 @@ func _process(delta):
 	# Turning right
 	if (Input.is_action_pressed("ship_turn_right")):
 		ship_accelerate = m_r * ship_accelerate
-		get_node("Acceleration").set_text("Acceleration" + str(ship_accelerate))
-		get_node("Velocity").set_text("Velocity" + str(ship_velocity))
 		get_node("Ship").set_rot(get_node("Ship").get_rot() - 0.08)
 		
 	# Turning left
 	if (Input.is_action_pressed("ship_turn_left")):
 		ship_accelerate = m_l * ship_accelerate
-		get_node("Acceleration").set_text("Acceleration" + str(ship_accelerate))
-		get_node("Velocity").set_text("Velocity" + str(ship_velocity))
 		get_node("Ship").set_rot(get_node("Ship").get_rot() + 0.08)
 		
 	get_node("Ship").set_pos(ship_pos)
