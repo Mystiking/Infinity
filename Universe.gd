@@ -9,14 +9,14 @@ var ship_velocity = Vector2(0, 0)
 var ship_accelerate = Vector2(0, -1)
 
 func _ready():
-	ship_size = get_node("Ship").get_texture().get_size()
+	ship_size = get_node("Ship_body/Ship").get_texture().get_size()
 	set_process(true)
 
 
 func _process(delta):
 	# The velocity and position of the ship
-	var ship_pos = get_node("Ship").get_pos() + ship_velocity * delta
-	var ship_tip = Vector2(get_node("Ship").get_pos().x, get_node("Ship").get_pos().y - 63)
+	var ship_pos = get_node("Ship_body/Ship").get_pos() + ship_velocity * delta
+	var ship_tip = Vector2(get_node("Ship_body/Ship").get_pos().x, get_node("Ship_body/Ship").get_pos().y - 63)
 	var ship_vector = ship_tip - ship_pos
 	
 	# The forward movement of the spaceship
@@ -24,7 +24,7 @@ func _process(delta):
 		ship_velocity += ship_accelerate
 		ship_pos += ship_velocity * delta
 		#play exhaust animation
-		get_node("Ship/AnimationPlayer").play("exhaust")
+		get_node("Ship_body/Ship/AnimationPlayer").play("exhaust")
 	else:
 		ship_pos += ship_velocity * delta
 	
@@ -42,11 +42,14 @@ func _process(delta):
 	# Turning right
 	if (Input.is_action_pressed("ship_turn_right")):
 		ship_accelerate = m_r * ship_accelerate
-		get_node("Ship").set_rot(get_node("Ship").get_rot() - 0.08)
+		get_node("Ship_body/Ship").set_rot(get_node("Ship_body/Ship").get_rot() - 0.08)
 		
 	# Turning left
 	if (Input.is_action_pressed("ship_turn_left")):
 		ship_accelerate = m_l * ship_accelerate
-		get_node("Ship").set_rot(get_node("Ship").get_rot() + 0.08)
+		get_node("Ship_body/Ship").set_rot(get_node("Ship_body/Ship").get_rot() + 0.08)
 		
-	get_node("Ship").set_pos(ship_pos)
+	# Handles collision
+	
+		
+	get_node("Ship_body/Ship").set_pos(ship_pos)
